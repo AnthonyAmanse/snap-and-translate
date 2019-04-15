@@ -27,17 +27,22 @@ sed -i "s#registry.ng.bluemix.net/<namespace>/watsontesseract:1#${WATSON_TESSERA
 # sed -i '' '/volumes/,$d' server/watson-lang-trans.yml
 # else create services
 
+# target cf for creating of services
+ibmcloud target --cf
 # create services
 ibmcloud service create language_translator lite toolchain-created-translator-service
-ibmcloud service create natural-language-understanding free toolchain-created-nlu-test
+ibmcloud service create natural-language-understanding free toolchain-created-nlu-service
+# insert commands here to check if service is ready
+# ...
+# then
 # bind services
-ibmcloud ks cluster-service-bind --cluster anthony-dev --namespace default --service toolchain-created-translator-service
-ibmcloud ks cluster-service-bind --cluster anthony-dev --namespace default --service toolchain-created-nlu-service
+ibmcloud ks cluster-service-bind --cluster ${PIPELINE_KUBERNETES_CLUSTER_NAME} --namespace default --service toolchain-created-translator-service
+ibmcloud ks cluster-service-bind --cluster ${PIPELINE_KUBERNETES_CLUSTER_NAME} --namespace default --service toolchain-created-nlu-service
 # check secrets
 kubectl get secrets
 
 sed -i "s#<binding-ocrlangtranslator>#binding-toolchain-created-translator-service#" server/watson-lang-trans.yml
-sed -i "s#<binding-ocrnlu>#toolchain-toolchain-created-nlu-service#" server/watson-lang-trans.yml
+sed -i "s#<binding-ocrnlu>#binding-toolchain-created-nlu-service#" server/watson-lang-trans.yml
 
 # show yaml file
 cat server/watson-lang-trans.yml
