@@ -21,7 +21,7 @@ else
 fi
 
 # move env.sample file // .env is required in dockerfile
-mv env.sample .env
+mv server/env.sample server/.env
 
 # handle if user has entered api keys
 # if [ -z "${WATSON_NLU}" && -z "${WATSON_TRANSLATOR}"]; then
