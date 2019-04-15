@@ -1,5 +1,9 @@
 [![Build Status](https://api.travis-ci.org/IBM/snap-and-translate.svg?branch=master)](https://travis-ci.org/IBM/snap-and-translate)
 
+#### test one click
+
+[![Create toolchain](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.com/AnthonyAmanse/snap-and-translate)
+
 # Build a hybrid mobile app that can capture an image, recognize and translate text using Tesseract OCR & Watson Language Translator
 
 In this Code Pattern, we will create a hybrid mobile app using Apache Cordova and Node.js server application running on IBM Cloud Kubernetes service that uses Tesseract OCR to recognize text in images, Watson Language Translator to translate the recognized text and Watson Natural Language Understanding to extract emotion,sentiment from the text. This mobile app translates the recognized text from the images captured or uploaded from the photo album.
@@ -23,7 +27,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 ## Included components
 * [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers/container_index.html): IBM Cloud Kubernetes Service manages highly available apps inside Docker containers and Kubernetes clusters on the IBM Cloud.
 * [Watson Language Translator](https://www.ibm.com/watson/services/language-translator/): IBM Watson Language Translator is a service that enables you to dynamically translate news, patents or conversational documents.
-* [Watson Natural Language Understanding](https://www.ibm.com/watson/developercloud/natural-language-understanding.html): An IBM Cloud service that can analyze text to extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, semantic roles, using natural language understanding. 
+* [Watson Natural Language Understanding](https://www.ibm.com/watson/developercloud/natural-language-understanding.html): An IBM Cloud service that can analyze text to extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, semantic roles, using natural language understanding.
 
 ## Featured technologies
 * [Apache Cordova](https://cordova.apache.org/): An open-source mobile development framework to build hybrid mobile apps.
@@ -121,7 +125,7 @@ $ docker push registry.ng.bluemix.net/<ibmcloud_container_registry_namespace>/wa
 $ kubectl apply -f watson-lang-trans.yml
 ```
 
-* Get the public IP address by replacing the <cluster_name>. (Take a note of the Public IP address since it is required in the later steps) 
+* Get the public IP address by replacing the <cluster_name>. (Take a note of the Public IP address since it is required in the later steps)
 
 ```
 $ ibmcloud cs workers <cluster_name>
@@ -155,11 +159,11 @@ LANGUAGE_TRANSLATOR_URL=<use url here>
 # NATURAL_LANGUAGE_UNDERSTANDING_PASSWORD=<use natural language understanding password>
 NATURAL_LANGUAGE_UNDERSTANDING_IAM_APIKEY=<use natural language understanding iam API key>
 NATURAL_LANGUAGE_UNDERSTANDING_URL=<use natural language understanding URL>
-```	
+```
 
-### 3c. Go to `server` folder and run the docker build. 
+### 3c. Go to `server` folder and run the docker build.
 
-* Build the `snap-translate-server`. From terminal run: 
+* Build the `snap-translate-server`. From terminal run:
 
 ```
 $ cd server
@@ -192,7 +196,7 @@ After the docker build is running you can now run the `ngrok` command from the p
 ```
 $ ./usr/local/ngrok http 3000
 ```
-The sample output of the above command is: 
+The sample output of the above command is:
 
 ![](doc/source/images/ngrok.png)
 
